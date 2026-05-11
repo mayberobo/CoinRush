@@ -19,6 +19,8 @@ public class PlayerScript : MonoBehaviour
     public TextMeshPro ScoreText;
 
     public TextMeshPro HealthText;
+    public Sprite normalFace;
+    public Sprite attackedFace;
     
     //This will control how fast the player moves
     public float Speed = 5;
