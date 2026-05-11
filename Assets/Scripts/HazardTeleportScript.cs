@@ -7,9 +7,18 @@ public class HazardTeleportScript : MonoBehaviour
 {
 
     public Transform t;
-    public void teleportHazard()
+    public Transform startingPosition;
+    
+    
+    public float speed = 5f;
+
+    void Start()
     {
-        //This teleports the hazard
-        t.position = new Vector3(Random.Range(-5, 5), Random.Range(-5, 4.6f), 0);
+      startingPosition.position = new Vector3(Random.Range(-4.7f, 4.7f), Random.Range(-4.6f, 4.6f), 0);
+    }
+
+    void Update()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, t.position, speed * Time.deltaTime);
     }
 }

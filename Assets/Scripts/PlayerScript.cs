@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerScript : MonoBehaviour
 
     //TextMeshPro is a component that draws text on the screen.
     //We use this one to show our score.
+    public HazardTeleportScript hazard;
     public TextMeshPro ScoreText;
 
     public TextMeshPro HealthText;
@@ -27,10 +29,12 @@ public class PlayerScript : MonoBehaviour
     public int Health = 3;
     
     //Start automatically gets triggered once when the objects turns on/the game starts
+   // private GameObject Crusher;
     void Start()
     {
         UpdateScore();
         UpdateHealth();
+        
     }
 
     private void takeAwayLife()
@@ -44,8 +48,12 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    private GameObject obj = GameObject.Find("Crusher");
     void Update()
     {
+        
+       
+      
         if (Input.GetKey(KeyCode.LeftShift)) // sprint feature
         {
             Speed = 10;
@@ -54,6 +62,7 @@ public class PlayerScript : MonoBehaviour
         {
             Speed = 5;
         }
+      //  Vector2 vel = new Vector2(0,RB.linearVelocity.y);
         Vector2 vel = new Vector2(0,0);
 
         if (Input.GetKey(KeyCode.RightArrow))
@@ -87,26 +96,70 @@ public class PlayerScript : MonoBehaviour
             takeAwayLife();
         }
         
+        
+        
         //This checks to see if the thing you bumped into has the CoinScript script on it
         CoinScript coin = other.gameObject.GetComponent<CoinScript>();
         HazardTeleportScript haz = other.gameObject.GetComponent<HazardTeleportScript>();
         //If it does, run the code block belows
+
+        
         if (coin != null)
         {
             coin.GetBumped(); 
-            haz.teleportHazard();
+         
             //Make your score variable go up by one. . .
             Score++;
             //And then update the game's score text
             UpdateScore();
-        }
-    }
+        } 
+     }
 
     //This function updates the game's score text to show how many points you have
     //Even if your 'score' variable goes up, if you don't update the text the player doesn't know
     public void UpdateScore()
     {
         ScoreText.text = "Score: " + Score;
+        if (Score == 10)
+        {
+            GameObject hazard = GameObject.Find("Hazard");
+
+            if (hazard != null)
+            {
+                HazardTeleportScript hazardScript =
+                    hazard.GetComponent<HazardTeleportScript>();
+
+                if (hazardScript != null)
+                {
+                    hazardScript.enabled = true;
+                }
+            }
+        }
+        if (Score == 20)
+        {
+            GameObject crusher = GameObject.Find("CrusherSprite");
+            if (crusher != null)
+            {
+                Crusher crusherScript = crusher.GetComponent<Crusher>();
+                if (crusherScript != null)
+                {
+                    crusherScript.enabled = true;
+                }
+            }
+        }
+        
+        if (Score == 30)
+        {
+            GameObject crusher = GameObject.Find("CrusherSpriteBelow");
+            if (crusher != null)
+            {
+                CrusherBelow crusherScript = crusher.GetComponent<CrusherBelow>();
+                if (crusherScript != null)
+                {
+                    crusherScript.enabled = true;
+                }
+            }
+        }
     }
 
     public void UpdateHealth()
