@@ -1451,6 +1451,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8714988357030234600, guid: 5465daea84a2bcb43acd34cbcbb9c9ae, type: 3}
   m_PrefabInstance: {fileID: 3926531873766881997}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1196624173 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1019695680463351993, guid: 5465daea84a2bcb43acd34cbcbb9c9ae, type: 3}
+  m_PrefabInstance: {fileID: 3926531873766881997}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1383728986 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1849279779400285333, guid: fb946d28a97bb974a85272d12a1a51be, type: 3}
@@ -2045,9 +2050,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3310002292416464744, guid: db741f3d349e4824481159864edfd4a7, type: 3}
     - target: {fileID: 1019695680463351993, guid: 5465daea84a2bcb43acd34cbcbb9c9ae, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019695680463351993, guid: 5465daea84a2bcb43acd34cbcbb9c9ae, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019695680463351993, guid: 5465daea84a2bcb43acd34cbcbb9c9ae, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019695680463351993, guid: 5465daea84a2bcb43acd34cbcbb9c9ae, type: 3}
       propertyPath: m_SortingOrder
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 5295994739419230840, guid: 5465daea84a2bcb43acd34cbcbb9c9ae, type: 3}
+      propertyPath: face
+      value: 
+      objectReference: {fileID: 1196624173}
     - target: {fileID: 5295994739419230840, guid: 5465daea84a2bcb43acd34cbcbb9c9ae, type: 3}
       propertyPath: Health
       value: 5

@@ -17,7 +17,7 @@ public class PlayerScript : MonoBehaviour
     //We use this one to show our score.
     public HazardTeleportScript hazard;
     public TextMeshPro ScoreText;
-
+    public SpriteRenderer face;
     public TextMeshPro HealthText;
     public Sprite normalFace;
     public Sprite attackedFace;
@@ -58,10 +58,12 @@ public class PlayerScript : MonoBehaviour
       
         if (Input.GetKey(KeyCode.LeftShift)) // sprint feature
         {
-            Speed = 10;
+            Speed = 9;
+            face.color = Color.cyan;
         }
         else
         {
+            face.color = Color.white;
             Speed = 5;
         }
       //  Vector2 vel = new Vector2(0,RB.linearVelocity.y);
